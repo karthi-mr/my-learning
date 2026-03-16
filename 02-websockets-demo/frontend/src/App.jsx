@@ -7,7 +7,7 @@ function App() {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080/ws");
+    const socket = new WebSocket("ws://localhost:8080/chat");
     socketRef.current = socket;
 
     socket.onopen = () => {

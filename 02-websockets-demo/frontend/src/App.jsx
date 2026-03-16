@@ -52,7 +52,7 @@ function App() {
         style={{ padding: "8px", width: "250px", marginRight: "10px" }}
       />
 
-      <button onClick={sendMessage} style={{ padding: "8px 12px" }}>
+      <button onClick={sendMessage} style={{ padding: "8px 12px" }} disabled={socketStatus === "Disconnected"}>
         Send
       </button>
 

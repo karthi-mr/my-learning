@@ -56,15 +56,21 @@ public class ChatController {
 
     @MessageMapping("/chat.private")
     public void sendPrivateMessage(@Payload ChatMessage message, Principal principal) {
+        System.out.println("principal = " + (principal != null ? principal.getName() : "null"));
+        System.out.println("sender = " + message.getSender());
+        System.out.println("recipient = " + message.getRecipient());
+
+        String sender = principal != null ? principal.getName() : message.getSender();
+
         ChatMessage outgoingMessage = ChatMessage.builder()
                 .type("PRIVATE")
-                .sender(principal.getName())
+                .sender(sender)
                 .recipient(message.getRecipient())
                 .content(message.getContent())
                 .timestamp(System.currentTimeMillis())
                 .build();
         this.messagingTemplate.convertAndSendToUser(message.getRecipient(), "/queue/private", outgoingMessage);
-        this.messagingTemplate.convertAndSendToUser(principal.getName(), "/queue/private", outgoingMessage);
+        this.messagingTemplate.convertAndSendToUser(sender, "/queue/private", outgoingMessage);
     }
 
     @MessageMapping("/chat.typing")

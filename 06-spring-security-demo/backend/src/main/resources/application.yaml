@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: backend
+
+server:
+  port: 8082
+
+app:
+  jwt:
+    secret: ThisIsMyVerySecretKeyForJwtSigningThisMustBeLongEnough123456
+    access-expiration: 900000
+    refresh-expiration: 604800000

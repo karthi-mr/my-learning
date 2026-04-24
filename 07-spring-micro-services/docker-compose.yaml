@@ -15,9 +15,26 @@ services:
       - "5433:5432"
     networks:
       - ms_network
+  postgres_order:
+    container_name: ms_postgres_order
+    image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: order_db
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres_order:/data/postgres
+    restart: unless-stopped
+    ports:
+      - "5434:5432"
+    networks:
+      - ms_network
 
 volumes:
   postgres_product:
+    driver: local
+  postgres_order:
     driver: local
 
 networks:

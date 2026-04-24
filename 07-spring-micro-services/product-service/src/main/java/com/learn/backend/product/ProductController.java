@@ -33,7 +33,7 @@ public class ProductController {
         return ResponseEntity.ok(this.productService.findProductById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/reduce-stock")
     public ResponseEntity<Void> reduceStock(
             @PathVariable Long id,
             @RequestParam Integer quantity

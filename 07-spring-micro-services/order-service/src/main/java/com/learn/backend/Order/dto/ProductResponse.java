@@ -1,4 +1,4 @@
-package com.learn.backend.product.dto;
+package com.learn.backend.Order.dto;
 
 import java.math.BigDecimal;
 

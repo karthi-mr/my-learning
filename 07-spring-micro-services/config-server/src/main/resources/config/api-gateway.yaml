@@ -14,7 +14,7 @@ spring:
                 - Path=/api/orders/**
 
 server:
-  port: 8080
+  port: 8083
 
 eureka:
   client:
